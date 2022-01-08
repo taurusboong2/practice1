@@ -17,9 +17,29 @@ header h1 {
     width: 100%;
 }
 #wrap .input_box {
+    width: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 0 auto;
+}
+#names,
+#des {
+    height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+#des {
+    margin-top: 5px;
+}
+#names::placeholder,
+#des::placeholder{
+    text-align: center;
+    font-size: 1.1rem;
+}
+#btn {
+    margin-top: 5px;
 }
 .list_wrap{
     width: 100%;
