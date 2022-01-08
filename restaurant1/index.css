@@ -29,6 +29,8 @@ header h1 {
 }
 .list {
     min-width: 500px;
+}
+.list li {
     border-bottom: 1px solid #333;
 }
 .list h3 {
