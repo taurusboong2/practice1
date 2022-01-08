@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+#wrap{
+    width: 100%;
+}
+#wrap .input_box {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.list_wrap{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.list {
+    min-width: 500px;
+    border-bottom: 1px solid #333;
+}
+.list h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.list p {
+    margin-top: 3px;
+    text-align: center;
+}
