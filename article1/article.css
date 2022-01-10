@@ -1,0 +1,99 @@
+header {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: rosybrown;
+}
+header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#detail_header {
+    background-color: blanchedalmond;
+}
+
+#create_box {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    position: relative;
+    left: 150px;
+}
+#create_box a {
+    border: 1px solid black;
+    padding: 5px 10px;
+    color: black;
+    transition: .35s;
+}
+#create_box a:hover {
+    background-color: #eee;
+}
+
+#list_wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+#list_wrap #list {
+    width: 300px;
+}
+#list_wrap li {
+    text-align: center;
+    margin-top: 5px;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+}
+#list_wrap li h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+#list_wrap li p {
+    margin-top: 10px;
+    font-size: .8rem;
+    color: #777;
+}
+
+/* ***** create page ***** */
+#form_wrap {
+    display: flex;
+    justify-content: center;
+}
+#form_wrap form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+#form_wrap label {
+    text-align: center;
+    font-weight: 600;
+}
+#form_wrap label b {
+    font-size: 0.7rem;
+    color: #555;
+}
+#form_wrap input, 
+#form_wrap textarea {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+
+}
+#form_wrap input {
+    height: 30px;
+}
+#radio_box {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#radio_box input {
+    line-height: 50px;
+    vertical-align: middle;
+}
+#radio_box label {
+    margin-right: 8px;
+    font-weight: lighter;
+    line-height: 50px;
+}

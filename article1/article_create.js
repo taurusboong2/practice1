@@ -14,35 +14,19 @@ const getData = async () => {
     }
 }
 
-let myData = () => {
-    getData().then(res => {
-        let list = document.querySelector("#list");
-        let data = res.data;
-        let result = ``;
-        data.forEach(e => {
-            result += `
-            <li>
-                <a href="article_detail.html">
-                    <h2>${e.attributes.title}</h2>
-                    <p>${e.attributes.createdAt}</p>
-                </a>
-            </li>
-        `
-        })
-        list.innerHTML = result;
-    })
-}
-
 const sendData = async () => {
     let title = document.querySelector('#title');
     let des = document.querySelector('#des');
     let author = document.querySelector('#author');
-    let type = document.getElementsByName("type");
+    let type = document.querySelector('input[name="type"]:checked');
     const titleValue = title.value;
     const desValue = des.value;
     const authorValue = author.value;
     const typeValue = type.value;
     console.log(titleValue);
+    console.log(desValue);
+    console.log(authorValue);
+    console.log(typeValue);
     const data = JSON.stringify({ "data" : { 
         "title" : titleValue,
         "description" : desValue,
@@ -72,8 +56,5 @@ const sendData = async () => {
     des.value = null;
     author.value = null;
 }
-sendData();
 
-// submitBtn.addEventListener("click", sendData);
-// submitBtn.addEventListener("click", myData);
-myData();
+submitBtn.addEventListener("click", sendData);

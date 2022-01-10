@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Create</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="article.css">
+</head>
+<body>
+    <header id="detail_header">
+        <h1>Article Detail</h1>
+    </header>
+    <div id="form_wrap">
+        <form method="POST">
+            <label for="title">title을 입력 해주세요. <b>*필수</b></label>
+            <input type="text" name="title" id="title" placeholder="title 입력">
+            <label for="des">des 입력 해주세요. <b>*생략 가능</b></label>
+            <textarea name="des" id="des" cols="30" rows="5" placeholder="des 입력"></textarea>
+            <label for="author">author을 입력 해주세요. <b>*필수</b></label>
+            <input type="text" name="author" id="author" placeholder="author 입력">
+            <label for="type">type를 선택 해주세요.<b>*필수</b></label>
+            <div id="radio_box">
+                <input type="radio" id="notice" name="type" value="notice">
+                <label for="notice">notice</label>
+                <input type="radio" id="question" name="type" value="question">
+                <label for="question">question</label>
+                <input type="radio" id="talking" name="type" value="talking">
+                <label for="talking">talking</label>
+                <input type="radio" id="etc" name="type" value="etc">
+                <label for="etc">etc</label>
+            </div>
+            <input id="submit_btn" type="button" value="생성" style="margin-top: 30px;">
+        </form>
+    </div>
+
+
+
+    <script src="article_create.js"></script>
+</body>
+</html>
