@@ -55,6 +55,9 @@ const sendData = async () => {
     title.value = null;
     des.value = null;
     author.value = null;
+
+    //html 경로 이동
+    location.href = "article.html";
 }
 
 submitBtn.addEventListener("click", sendData);
