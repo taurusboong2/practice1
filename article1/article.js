@@ -1,5 +1,4 @@
 let url = 'http://localhost:1337/api/articles';
-let submitBtn = document.querySelector('#submit_btn');
 
 const getData = async () => {
     try {
@@ -33,47 +32,21 @@ let myData = () => {
     })
 }
 
-const sendData = async () => {
-    let title = document.querySelector('#title');
-    let des = document.querySelector('#des');
-    let author = document.querySelector('#author');
-    let type = document.getElementsByName("type");
-    const titleValue = title.value;
-    const desValue = des.value;
-    const authorValue = author.value;
-    const typeValue = type.value;
-    console.log(titleValue);
-    const data = JSON.stringify({ "data" : { 
-        "title" : titleValue,
-        "description" : desValue,
-        "author" : authorValue,
-        "type" : typeValue
-        } 
-    });
-    try {
-        const response = await fetch(url, {
-            method: 'POST',
-            body: data,
-            headers: {
-                'Content-type': 'application/json; charset=utf-8'
-            }
-        });
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            console.log(jsonResponse);
-            // return jsonResponse;
-        }
-    } catch (error) {
-        console.log(error);
-    }
+const putData = () => {
+    getData().then( res => {
+        const data = res.data;
+        const title = document.querySelector("#detail_title");
+        const author = document.querySelector("#detail_author");
+        const des = document.querySelector("#detail_des");
+        const type = document.querySelector("#detail_type");
+        const create = document.querySelector("#create_data");
+        const update = document.querySelector("#update_data");
 
-    //input 값 초기화
-    title.value = null;
-    des.value = null;
-    author.value = null;
+        title.innerHTML = data[0].attributes.title;
+        type.innerHTML = data[0].attributes.type;
+        des.innerHTML = data[0].attributes.description;
+        author.innerHTML = data[0].attributes.author;
+        create.innerHTML = data[0].attributes.createdAt;
+        update.innerHTML = data[0].attributes.updatedAt;
+    })
 }
-sendData();
-
-// submitBtn.addEventListener("click", sendData);
-// submitBtn.addEventListener("click", myData);
-myData();

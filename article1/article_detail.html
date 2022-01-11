@@ -8,11 +8,38 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="article.css">
 </head>
-<body>
-    <header>
+<body onload="putData()">
+    <header id="detail_header">
         <h1>Article Detail</h1>
     </header>
-
+    <main>
+        <!-- ***** detail_wrap ***** -->
+        <div id="detail_wrap">
+            <p id="detail_type">type</p>
+            <h2 id="detail_title">detail_title</h2>
+            <h3 id="detail_author">detail_author</h3>
+            <p id="detail_des">detail_des</p>
+            <div id="time_wrap">
+                <p id="detail_create">
+                    생성시간: 
+                    <b id="create_data">
+                        2022-01-11T04:42:48.961Z
+                    </b>
+                </p>
+                <p id="detail_update">
+                    수정시간: 
+                    <b id="update_data">
+                        2022-01-11T04:42:48.961Z
+                    </b>
+                </p>
+            </div>
+        </div>
+        <!-- ***** detail_wrap ***** -->
+        <div id="btn_wrap">
+            <div id="delete_btn">삭제</div>
+            <a href="article_update.html">수정</a>
+        </div>
+    </main>
 
 
 
