@@ -1,3 +1,6 @@
+const url = new URL(window.location);
+const urlID = url.searchParams.get("id");
+
 const getData = async () => {
     let url = 'http://localhost:1337/api/articles';
     try {
@@ -33,8 +36,6 @@ let myData = () => {
 }
 
 const putData = () => {
-    const url = new URL(window.location);
-    const urlID = url.searchParams.get("id");
     getData().then( res => {
         const data = res.data;
         const title = document.querySelector("#detail_title");
@@ -43,7 +44,7 @@ const putData = () => {
         const type = document.querySelector("#detail_type");
         const create = document.querySelector("#create_data");
         const update = document.querySelector("#update_data");
-        data.forEach((e, i) => {
+        data.forEach( e => {
             if(urlID == e.id) {
                 title.innerHTML = e.attributes.title;
                 type.innerHTML = e.attributes.type;
@@ -54,11 +55,11 @@ const putData = () => {
             }
         })
     })
+    const updateBtn = document.querySelector('#update_btn');
+    updateBtn.setAttribute('href',`article_update.html?id=${urlID}`);
 }
 
-const deleteData1 = async () => {
-    const url = new URL(window.location);
-    const urlID = url.searchParams.get("id");
+const deleteData = async () => {
     try {
         const response = await fetch(`http://localhost:1337/api/articles/${urlID}`, {
             method:'DELETE',
@@ -77,16 +78,53 @@ const deleteData1 = async () => {
     location.href = "article.html";
 }
 
-// const idValue = [];
-// const deleteData2 = () => {
-//     getData().then(res => {
-//         const data = res.data;
-//         data.forEach(e => {
-//             idValue.push(e.id);
-//         })
-//     })
-// }
-const deleteBtn = document.querySelector('#delete_btn');
+const updatePage = async () => {
+    getData().then( res => {
+        const data = res.data;
+        const title = document.querySelector("#ud_title");
+        const author = document.querySelector("#ud_author");
+        const des = document.querySelector("#ud_des");
+        data.forEach( e => {
+            if(urlID == e.id) {
+                title.value = e.attributes.title;
+                des.value = e.attributes.description;
+                author.value = e.attributes.author;
+            }
+        })
+    })
+}
 
-// deleteData2();
-deleteBtn.addEventListener('click', deleteData1);
+
+const updateData = async () => {
+    const title = document.querySelector("#ud_title");
+    const author = document.querySelector("#ud_author");
+    const des = document.querySelector("#ud_des");
+    const titleValue = title.value;
+    const authorValue = author.value;
+    const desValue = des.value;
+    // const type = document.querySelector("#ud_des");
+    // const typeValue = type.target.options[target.selectedIndex].text;
+    const data = JSON.stringify({ "data" : { 
+        "title" : titleValue,
+        "description" : desValue,
+        "author" : authorValue,
+        // "type" : typeValue
+        } 
+    });
+    try {
+        const response = await fetch(`http://localhost:1337/api/articles/${urlID}`, {
+            method: 'PATCH',
+            body: data,
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            return jsonResponse;
+        }
+    } catch (err) {
+        console.log(err);
+    }
+    location.href = `article_detail.html?id=${urlID}`;
+}

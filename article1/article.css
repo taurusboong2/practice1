@@ -145,8 +145,8 @@ header h1 {
     text-align: center;
     column-gap: 30px;
 }
-#btn_wrap div,
-#btn_wrap a {
+#btn_wrap #delete_btn,
+#btn_wrap #update_btn {
     width: 70px;
     height: 30px;
     line-height: 30px;
@@ -160,3 +160,44 @@ header h1 {
 }
 
 /* ***** update page ***** */
+#ud_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+#ud_wrap select {
+    margin-bottom: 20px;
+}
+#ud_wrap label {
+    text-align: center;
+    font-weight: 600;
+}
+#ud_wrap label b {
+    font-size: 0.7rem;
+    color: #555;
+}
+#ud_wrap input, 
+#ud_wrap textarea {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+
+}
+#ud_wrap input {
+    height: 30px;
+}
+#udbtn_wrap {
+    display: flex;
+    justify-content: center;
+}
+#ud_btn {
+    text-align: center;
+    margin: 30px auto;
+    background-color: blue;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+}

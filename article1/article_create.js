@@ -10,10 +10,6 @@ const sendData = async () => {
     const desValue = des.value;
     const authorValue = author.value;
     const typeValue = type.value;
-    console.log(titleValue);
-    console.log(desValue);
-    console.log(authorValue);
-    console.log(typeValue);
     const data = JSON.stringify({ "data" : { 
         "title" : titleValue,
         "description" : desValue,
