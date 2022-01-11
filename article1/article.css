@@ -156,6 +156,7 @@ header h1 {
 }
 #btn_wrap #delete_btn {
     background-color: rgb(211, 43, 43);
+    cursor: pointer;
 }
 
 /* ***** update page ***** */

@@ -17,10 +17,11 @@ let myData = () => {
         let list = document.querySelector("#list");
         let data = res.data;
         let result = ``;
-        data.forEach((e, i) => {
+        data.forEach( e => {
+            let id = e.id;
             result += `
             <li>
-                <a href="article_detail.html?id=${i}">
+                <a href="article_detail.html?id=${id}">
                     <h2>${e.attributes.title}</h2>
                     <p>${e.attributes.createdAt}</p>
                 </a>
@@ -33,7 +34,7 @@ let myData = () => {
 
 const putData = () => {
     const url = new URL(window.location);
-    const id = url.searchParams.get("id");
+    const urlID = url.searchParams.get("id");
     getData().then( res => {
         const data = res.data;
         const title = document.querySelector("#detail_title");
@@ -43,7 +44,7 @@ const putData = () => {
         const create = document.querySelector("#create_data");
         const update = document.querySelector("#update_data");
         data.forEach((e, i) => {
-            if(id == i) {
+            if(urlID == e.id) {
                 title.innerHTML = e.attributes.title;
                 type.innerHTML = e.attributes.type;
                 des.innerHTML = e.attributes.description;
@@ -56,9 +57,14 @@ const putData = () => {
 }
 
 const deleteData1 = async () => {
+    const url = new URL(window.location);
+    const urlID = url.searchParams.get("id");
     try {
-        const response = await fetch('http://localhost:1337/api/articles', {
+        const response = await fetch(`http://localhost:1337/api/articles/${urlID}`, {
             method:'DELETE',
+            headers: {
+                'Content-type': 'application/json; charset=utf-8'
+            },
         })
         if (response.ok) {
             const jsonResponse = await response.json();
@@ -68,19 +74,19 @@ const deleteData1 = async () => {
     } catch (err) {
         console.log(err);
     }
+    location.href = "article.html";
 }
 
-const deleteData2 = () => {
-    getData().then(res => {
-        const data = res.data;
-        data.forEach(e => {
-            const id = e.id;
-            console.log('id는', id);
-        })
-    })
-}
-
+// const idValue = [];
+// const deleteData2 = () => {
+//     getData().then(res => {
+//         const data = res.data;
+//         data.forEach(e => {
+//             idValue.push(e.id);
+//         })
+//     })
+// }
 const deleteBtn = document.querySelector('#delete_btn');
 
-deleteData2();
-deleteData1();
+// deleteData2();
+deleteBtn.addEventListener('click', deleteData1);
