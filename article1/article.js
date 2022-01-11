@@ -96,6 +96,7 @@ const updatePage = async () => {
 
 
 const updateData = async () => {
+    let thisURL = `http://localhost:1337/api/articles/${urlID}`;
     const title = document.querySelector("#ud_title");
     const author = document.querySelector("#ud_author");
     const des = document.querySelector("#ud_des");
@@ -112,8 +113,8 @@ const updateData = async () => {
         } 
     });
     try {
-        const response = await fetch(`http://localhost:1337/api/articles/${urlID}`, {
-            method: 'PATCH',
+        const response = await fetch(thisURL, {
+            method: 'PUT',
             body: data,
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -121,10 +122,11 @@ const updateData = async () => {
         })
         if (response.ok) {
             const jsonResponse = await response.json();
+            location.href = `article_detail.html?id=${urlID}`;
             return jsonResponse;
         }
     } catch (err) {
         console.log(err);
     }
-    location.href = `article_detail.html?id=${urlID}`;
+    
 }
