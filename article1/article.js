@@ -108,13 +108,13 @@ const updateData = async () => {
     const titleValue = title.value;
     const authorValue = author.value;
     const desValue = des.value;
-    // const type = document.querySelector("#ud_des");
-    // const typeValue = type.target.options[target.selectedIndex].text;
+    const type = document.querySelector("#ud_type");
+    const typeValue = type.options[type.selectedIndex].value;
     const data = JSON.stringify({ "data" : { 
         "title" : titleValue,
         "description" : desValue,
         "author" : authorValue,
-        // "type" : typeValue
+        "type" : typeValue
         } 
     });
     try {
@@ -143,16 +143,5 @@ const ff = async () => {
     const dataJson = await getData.json();
     console.log(dataJson);
     console.log(dataJson.data);
-        // .then(res => {
-        //     const jsonRes = res.json();
-        //     console.log(res);
-        //     console.log(jsonRes);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
-            
-        
 }
-
 ff();
