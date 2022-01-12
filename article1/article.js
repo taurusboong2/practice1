@@ -35,29 +35,34 @@ let myData = () => {
     })
 }
 
-const putData = () => {
-    getData().then( res => {
-        const data = res.data;
-        const title = document.querySelector("#detail_title");
-        const author = document.querySelector("#detail_author");
-        const des = document.querySelector("#detail_des");
-        const type = document.querySelector("#detail_type");
-        const create = document.querySelector("#create_data");
-        const update = document.querySelector("#update_data");
-        data.forEach( e => {
-            if(urlID == e.id) {
-                title.innerHTML = e.attributes.title;
-                type.innerHTML = e.attributes.type;
-                des.innerHTML = e.attributes.description;
-                author.innerHTML = e.attributes.author;
-                create.innerHTML = e.attributes.createdAt;
-                update.innerHTML = e.attributes.updatedAt;
-            }
-        })
-    })
+const putData2 = async () => {
+    let url = `http://localhost:1337/api/articles/${urlID}`;
+    const title = document.querySelector("#detail_title");
+    const author = document.querySelector("#detail_author");
+    const des = document.querySelector("#detail_des");
+    const type = document.querySelector("#detail_type");
+    const create = document.querySelector("#create_data");
+    const update = document.querySelector("#update_data");
+    try {
+        const response = await fetch(url);
+        if(response.ok) {
+            const jsonResponse = await response.json();
+            const dataAttr = jsonResponse.data.attributes;
+            title.innerHTML = dataAttr.title;
+            type.innerHTML = dataAttr.type;
+            des.innerHTML = dataAttr.description;
+            author.innerHTML = dataAttr.author;
+            create.innerHTML = dataAttr.createdAt;
+            update.innerHTML = dataAttr.updatedAt;
+            // return jsonResponse;
+        }
+    } catch (err) {
+        console.log(err);
+    }
     const updateBtn = document.querySelector('#update_btn');
     updateBtn.setAttribute('href',`article_update.html?id=${urlID}`);
 }
+
 
 const deleteData = async () => {
     try {
@@ -130,3 +135,24 @@ const updateData = async () => {
     }
     
 }
+
+const ff = async () => {
+    let url = `http://localhost:1337/api/articles`;
+    const getData = await fetch(url)
+    console.log(getData);
+    const dataJson = await getData.json();
+    console.log(dataJson);
+    console.log(dataJson.data);
+        // .then(res => {
+        //     const jsonRes = res.json();
+        //     console.log(res);
+        //     console.log(jsonRes);
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // })
+            
+        
+}
+
+ff();
